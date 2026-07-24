@@ -45,7 +45,7 @@ export default function MarkMeWorkspace() {
   const [content, setContent] = useState(starterDocument);
   const [documentName, setDocumentName] = useState("Untitled note");
   const [saved, setSaved] = useState(true);
-  const [assistantOpen, setAssistantOpen] = useState(true);
+  const [assistantOpen, setAssistantOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [prompt, setPrompt] = useState("");
   const [message, setMessage] = useState("I’m here when you want a second pair of eyes.");
