@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import { Sparkles, ArrowRight, BookOpen, CheckCircle2 } from "lucide-react";
 
 export function HeroSection() {
   const [demoText, setDemoText] = useState(
@@ -9,7 +10,7 @@ export function HeroSection() {
   return (
     <section className="landing-hero">
       <div className="hero-badge">
-        <span className="sparkle">✦</span>
+        <Sparkles size={14} className="sparkle" />
         <span>A quiet, browser-first workspace</span>
       </div>
 
@@ -23,10 +24,12 @@ export function HeroSection() {
 
       <div className="hero-cta-group">
         <Link href="/app" className="button dark hero-cta-primary">
-          Launch Workspace <span aria-hidden>→</span>
+          <span>Launch Workspace</span>
+          <ArrowRight size={16} />
         </Link>
         <a href="#how-it-works" className="button ghost hero-cta-secondary">
-          See How It Works
+          <BookOpen size={16} />
+          <span>See How It Works</span>
         </a>
       </div>
 
@@ -70,10 +73,10 @@ export function HeroSection() {
               <p>
                 Write in plain <strong>Markdown</strong> and watch your words transform instantly into clean, publication-ready typography.
               </p>
-              <ul>
-                <li>✓ Distraction-free editing</li>
-                <li>✓ Live side-by-side preview</li>
-                <li>✓ 100% private local storage</li>
+              <ul className="demo-checklist">
+                <li><CheckCircle2 size={14} /> Distraction-free editing</li>
+                <li><CheckCircle2 size={14} /> Live side-by-side preview</li>
+                <li><CheckCircle2 size={14} /> 100% private local storage</li>
               </ul>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export function LandingHeader() {
   return (
@@ -16,7 +17,8 @@ export function LandingHeader() {
 
       <div className="landing-actions">
         <Link href="/app" className="button dark hero-button">
-          Open Workspace <span aria-hidden>→</span>
+          <span>Open Workspace</span>
+          <ArrowRight size={15} />
         </Link>
       </div>
     </header>

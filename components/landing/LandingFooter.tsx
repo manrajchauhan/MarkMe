@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export function LandingFooter() {
   return (
@@ -15,7 +16,10 @@ export function LandingFooter() {
         <div className="footer-links">
           <div className="link-group">
             <h4>Workspace</h4>
-            <Link href="/app">Launch App</Link>
+            <Link href="/app" className="inline-link">
+              <span>Launch App</span>
+              <ArrowUpRight size={13} />
+            </Link>
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
           </div>

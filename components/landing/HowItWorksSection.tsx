@@ -1,19 +1,24 @@
+import { FileText, SlidersHorizontal, FileCheck } from "lucide-react";
+
 export function HowItWorksSection() {
   const steps = [
     {
       number: "01",
+      icon: <FileText size={20} className="step-icon" />,
       title: "Write in Plain Markdown",
       description:
         "Open MarkMe instantly in your browser. Start with starter notes or a fresh blank page. Format naturally using standard Markdown syntax.",
     },
     {
       number: "02",
+      icon: <SlidersHorizontal size={20} className="step-icon" />,
       title: "Adjust Split & Live Preview",
       description:
         "Watch your text convert live into editorial prose. Drag the interactive split handle to expand your editor or preview according to your focus.",
     },
     {
       number: "03",
+      icon: <FileCheck size={20} className="step-icon" />,
       title: "Autosave & Download",
       description:
         "Your progress is continuously saved to browser storage. Export your formatted notes as standard `.md` files whenever you are ready.",
@@ -33,7 +38,10 @@ export function HowItWorksSection() {
       <div className="steps-container">
         {steps.map((step, idx) => (
           <div key={idx} className="step-card">
-            <span className="step-number">{step.number}</span>
+            <div className="step-top">
+              <span className="step-number">{step.number}</span>
+              {step.icon}
+            </div>
             <h3>{step.title}</h3>
             <p>{step.description}</p>
           </div>
