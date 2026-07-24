@@ -1,0 +1,27 @@
+{
+  "name": "markme",
+  "version": "1.0.0",
+  "description": "MarkMe — a warm, focused Markdown workspace for the web.",
+  "private": true,
+  "license": "MIT",
+  "author": "Manraj Chauhan",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "dompurify": "^3.1.6",
+    "marked": "^14.1.4",
+    "next": "^14.2.31",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.15",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
+  }
+}

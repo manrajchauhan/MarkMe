@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+.next/
+next-env.d.ts
+
+# Build output
+out/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Secrets
+.env
+.env.local
+*.key
+
