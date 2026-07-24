@@ -1,4 +1,5 @@
 import React, { RefObject } from "react";
+import Link from "next/link";
 
 interface HeaderProps {
   saved: boolean;
@@ -19,17 +20,14 @@ export function Header({
 }: HeaderProps) {
   return (
     <header className="topbar">
-      <button
-        className="brand"
-        onClick={onNewNote}
-        aria-label="Create a new MarkMe note"
-      >
+      <Link href="/" className="brand" aria-label="MarkMe home">
         <span className="brand-mark">M</span>
         <span>MarkMe</span>
-      </button>
+      </Link>
 
       <nav className="top-nav" aria-label="Workspace navigation">
         <button onClick={onToggleSidebar}>Library</button>
+        <button onClick={onNewNote}>+ New note</button>
       </nav>
 
       <div className="top-actions">
