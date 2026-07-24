@@ -6,10 +6,12 @@ import { WelcomeStrip } from "../components/WelcomeStrip";
 import { LibraryPanel } from "../components/LibraryPanel";
 import { EditorPanel } from "../components/EditorPanel";
 import { PreviewPanel } from "../components/PreviewPanel";
+import { Resizer } from "../components/Resizer";
 import { Footer } from "../components/Footer";
 import { EXAMPLE_NOTES } from "../lib/constants";
 import { renderMarkdown } from "../lib/utils";
 import { useDocument } from "../hooks/useDocument";
+import { useResizable } from "../hooks/useResizable";
 
 export default function MarkMeWorkspace() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -26,6 +28,9 @@ export default function MarkMeWorkspace() {
     importFile,
     handleDownload,
   } = useDocument();
+
+  const { splitPercent, containerRef, startDragging, resetSplit } =
+    useResizable(50, 20, 80);
 
   const html = useMemo(() => renderMarkdown(content), [content]);
 
@@ -52,14 +57,32 @@ export default function MarkMeWorkspace() {
           />
         )}
 
-        <EditorPanel
-          documentName={documentName}
-          content={content}
-          onTitleChange={updateTitle}
-          onContentChange={updateContent}
-        />
+        <div className="workspace-split" ref={containerRef}>
+          <div
+            className="split-panel"
+            style={{ width: `${splitPercent}%` }}
+          >
+            <EditorPanel
+              documentName={documentName}
+              content={content}
+              onTitleChange={updateTitle}
+              onContentChange={updateContent}
+            />
+          </div>
 
-        <PreviewPanel html={html} />
+          <Resizer
+            onMouseDown={startDragging}
+            onTouchStart={startDragging}
+            onDoubleClick={resetSplit}
+          />
+
+          <div
+            className="split-panel"
+            style={{ width: `calc(${100 - splitPercent}% - 9px)` }}
+          >
+            <PreviewPanel html={html} />
+          </div>
+        </div>
       </div>
 
       <Footer />

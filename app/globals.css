@@ -200,18 +200,63 @@ textarea:focus-visible {
 }
 
 /* ==========================================================================
-   Workspace Layout Grid
+   Workspace & Resizable Split Layout
    ========================================================================== */
 .workspace {
   flex: 1;
-  display: grid;
-  grid-template-columns: 245px minmax(330px, 1fr) minmax(330px, 1fr);
+  display: flex;
   min-height: 0;
   overflow: hidden;
 }
 
-.workspace.without-sidebar {
-  grid-template-columns: 1fr 1fr;
+.workspace-split {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+}
+
+.split-panel {
+  min-width: 150px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.split-resizer {
+  width: 9px;
+  margin: 0 -4px;
+  z-index: 10;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: none;
+  background: transparent;
+  transition: background 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.split-resizer:hover,
+.split-resizer:active {
+  background: rgba(28, 28, 28, 0.08);
+}
+
+.resizer-handle {
+  width: 3px;
+  height: 36px;
+  border-radius: 3px;
+  background: var(--line);
+  transition: background 0.15s ease, height 0.15s ease;
+}
+
+.split-resizer:hover .resizer-handle,
+.split-resizer:active .resizer-handle {
+  background: var(--ink);
+  height: 48px;
 }
 
 .library-panel,
@@ -226,6 +271,8 @@ textarea:focus-visible {
    Library Panel
    ========================================================================== */
 .library-panel {
+  width: 245px;
+  flex-shrink: 0;
   padding: 24px 16px 16px;
   display: flex;
   flex-direction: column;
@@ -600,12 +647,8 @@ footer {
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 1180px) {
-  .workspace {
-    grid-template-columns: 220px minmax(300px, 1fr) minmax(300px, 1fr);
-  }
-
-  .workspace.without-sidebar {
-    grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  .library-panel {
+    width: 220px;
   }
 }
 
@@ -646,11 +689,24 @@ footer {
     line-height: 1.4;
   }
 
-  .workspace,
-  .workspace.without-sidebar {
-    grid-template-columns: 1fr;
+  .workspace {
+    flex-direction: column;
     height: auto;
     overflow: visible;
+  }
+
+  .workspace-split {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .split-panel {
+    width: 100% !important;
+    height: auto;
+  }
+
+  .split-resizer {
+    display: none;
   }
 
   .library-panel,
@@ -661,6 +717,7 @@ footer {
   }
 
   .library-panel {
+    width: 100%;
     min-height: 350px;
     border-bottom: 1px solid var(--line);
   }
