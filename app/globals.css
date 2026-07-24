@@ -622,7 +622,7 @@ a {
   padding: 14px;
   display: flex;
   gap: 10px;
-  align-items: start;
+  align-items: flex-start;
   color: #655946;
   background: rgba(244, 235, 217, 0.45);
   margin-top: auto;
